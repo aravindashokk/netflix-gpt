@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile
 import { auth } from '../utils/Firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { BACKDROP_IMG, USER_AVATAR } from '../utils/constant';
 
 const Login = () => {
     const [isSignInForm,setIsSignInForm] = useState(true);
@@ -28,7 +29,7 @@ const Login = () => {
                     // Signed up 
                     const user = userCredential.user;
                     updateProfile(user, {
-                        displayName: name.current.value , photoURL: "https://avatars.githubusercontent.com/u/40633956?v=4"
+                        displayName: name.current.value , photoURL: USER_AVATAR
                       }).then(() => {
                         // Profile updated!
                         const { uid, email, displayName,photoURL} = auth.currentUser;
@@ -73,7 +74,7 @@ const Login = () => {
     <div>
         <Header />
         <div className='absolute'>
-            <img className='bg-gradient-to-b from-black' src="https://assets.nflxext.com/ffe/siteui/vlv3/154a9550-ce07-4e28-819c-63185dd849f8/web/US-en-20250106-TRIFECTA-perspective_65e335d4-6f1e-4d03-8daa-e439fbaaa340_large.jpg"  alt='bg-img' aria-hidden="true" />
+            <img className='bg-gradient-to-b from-black' src={BACKDROP_IMG}  alt='bg-img' aria-hidden="true" />
         </div>
     <form onSubmit={(e)=>e.preventDefault()} className='w-4/12  absolute  p-12 bg-black my-36 mx-auto right-0 left-0  rounded-lg bg-opacity-80 text-white'>
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
