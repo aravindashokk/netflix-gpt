@@ -16,7 +16,7 @@ const Header = () => {
 
   useEffect(() => {
     //handle user store update
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
         if (user) {
             const { uid, email, displayName,photoURL} = user;
             //update my store for sign in case
@@ -28,6 +28,10 @@ const Header = () => {
             navigate("/");
         }
     });
+
+    //unsubscribe when header component unmounts
+    return () => unsubscribe();
+
 }, []);
 
   const handleSignOut = () => {
