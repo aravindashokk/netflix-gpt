@@ -4,12 +4,14 @@ import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import usePopularMovies from '../hooks/usePopularMovies';
 import MainContainer from './MainContainer';
 import SecondaryContainer from './SecondaryContainer';
+import useTopRatedMovies from '../hooks/useTopRatedMovies';
 
 
 const Browse = () => {
   
   useNowPlayingMovies(); //custom hook
   usePopularMovies();
+  useTopRatedMovies();
 
   return (
     <div>
