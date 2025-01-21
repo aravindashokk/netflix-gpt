@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { addUser,removeUser } from '../utils/userSlice';
 import { onAuthStateChanged } from 'firebase/auth';
 import { LOGO } from '../utils/constant';
+import { toggleGptSearchView } from '../utils/gptSlice';
 
 
 
@@ -35,6 +36,11 @@ const Header = () => {
 
 }, []);
 
+  const handleGptSearchClick = () => {
+    //Toggle GPT Search
+    dispatch(toggleGptSearchView());
+  }
+
   const handleSignOut = () => {
     signOut(auth).then(() => {
       // Sign-out successful
@@ -49,6 +55,7 @@ const Header = () => {
       <img className='w-44' src={LOGO} alt='logo' />
       {/* load this portion only when user logged in */}
       {user && <div className='flex p-2'>
+        <button onClick={handleGptSearchClick} className='py-2 px-4 mx-4 my-2 bg-purple-800 text-white rounded-lg'>GPT Search</button>
         <img className="w-12 h-12 p-2" alt="user_icon" src={user.photoURL} />
         <button onClick={handleSignOut} className='font-bold text-white'>Sign Out</button>
       </div>}
