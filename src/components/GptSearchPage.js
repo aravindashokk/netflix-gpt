@@ -5,13 +5,16 @@ import { BACKDROP_IMG } from '../utils/constant';
 
 const GptSearchPage = () => {
   return (
-    <div>
+    <>
       <div className='fixed -z-10'>
-        <img className='bg-gradient-to-b from-black' src={BACKDROP_IMG} alt='bg-img' aria-hidden="true" />
+        <img className='h-screen object-cover md:w-screen' src={BACKDROP_IMG} alt='bg-img'  />
       </div>
-      <GptSearchBar />
-      <GptMovieSugestions />
-    </div>
+      <div className=''>
+        <GptSearchBar />
+        <GptMovieSugestions />
+      </div>
+    </>
+
   )
 }
 
